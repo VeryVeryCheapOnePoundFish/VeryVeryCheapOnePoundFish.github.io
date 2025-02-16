@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+    <html>
+    <body>
+    
+    <p>I am normal</p>
+    <p style="color:red;">Hello Guys</p>
+    <p style="color:blue;">I am Playing my fav songs from sabaton Great war playlist</p>
+    <p style="font-size:50px;">lets GOOO</p>
+    
+    </body>
+    </html>   <H1></H1>
+    <p></p>
+    <p></p>
+    <P><bold></bold></P>
+    <P><bold></bold></P>
+    <P> <bold></bold></P>
+    <P> <bold></bold></P>
+    <P> <bold></bold></P>
+    <A href="index2.html">Rizzler Hangout</A>
+    <img src="Voepass joke.png" width="225" height="400">
+    
+
+
+    
+    <br>
+    
+    <!-- Control Buttons -->
+    <button onclick="playPause()">Play/Pause</button>
+    <button onclick="prevTrack()">Previous</button>
+    <button onclick="nextTrack()">Next</button>
+    
+    
+    <h2>My Music Album</h2>
+
+    <h3>Song 1</h3>
+    <audio controls>
+        <source src="Sabaton - The Great War - 07 Great War.flac" type="audio/mpeg">
+        
+    </audio>
+    
+    <h3>Song 2</h3>
+    <audio controls>
+        <source src="Sabaton - The Great War - 04 The Attack of the Dead Men.flac" type="audio/mpeg">
+       
+    </audio>
+    
+    <h3>Song 3</h3>
+    <audio controls>
+        <source src="Sabaton - The Great War - 09 Fields of Verdun.flac" type="audio/mpeg">
+
+    </audio>
+    
+    <script>
+        // Playlist array (Add your songs here)
+        const playlist = ["song1.mp3", "song2.mp3", "song3.mp3"];
+        let currentTrack = 0;
+    
+        const audio = document.getElementById("music-player");
+        const source = document.getElementById("audio-source");
+    
+        // Function to load a new track
+        function loadTrack(trackIndex) {
+            if (trackIndex >= playlist.length) {
+                currentTrack = 0; // Loop back to the first song
+            } else if (trackIndex < 0) {
+                currentTrack = playlist.length - 1; // Go to the last song
+            } else {
+                currentTrack = trackIndex;
+            }
+            source.src = playlist[currentTrack];
+            audio.load();
+            audio.play();
+        }
+    
+        // Play/Pause function
+        function playPause() {
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+    
+        // Next track function
+        function nextTrack() {
+            loadTrack(currentTrack + 1);
+        }
+    
+        // Previous track function
+        function prevTrack() {
+            loadTrack(currentTrack - 1);
+        }
+    
+        // Auto-play next song when current ends
+        audio.onended = function () {
+            nextTrack();
+        };
+    </script>
+</body>
+</html>
